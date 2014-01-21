@@ -1,45 +1,26 @@
 ---
-layout: page
-title: Hello World!
-tagline: Supporting tagline
+layout: default
 ---
-{% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+<div class="jumbotron intro">
+  <h1>
+    <img src="/assets/images/Ember.js_Logo_and_Mascot.png" />
+    We are a consulting company located in the San Francisco Bay Area, helping businesses
+    to build web applications using Ember.js and Ruby on Rails.
+  </h1>
+</div>
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
-
-## Update Author Attributes
-
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
-
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
-
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
-
-    $ rm -rf _posts/core-samples
-
-Here's a sample "posts list".
-
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
-
-## To-Do
-
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/dbtek/jekyll-bootstrap-3)!
-
-
+<div class="well">
+  <p>
+  We love to contribute to open source projects like <a href="https://github.com/emberjs/ember.js">Ember.js</a>, Ember Data, and many more. We believe in testing and test-driven development.
+  </p>
+  <p>
+    We maintain <a href="https://github.com/tildeio/conductor.js">Conductor.js</a>, a library for creating sandboxed, re-usable apps that can be embedded inside a host application.
+    This involved developing:
+    <ul>
+      <li><a href="https://github.com/tildeio/oasis.js">Oasis.js</a>, a pleasant API for safe communication with untrusted code in sandboxed iframes and web workers</li>
+      <li><a href="https://github.com/tildeio/MessageChannel.js">MessageChannel.js</a>, a near-polyfill of the channel messaging described in the HTML5 specification.</li>
+      <li><a href="https://github.com/tildeio/kamino.js">Kamino.js</a>, an implementation of the structured clone algorithm described in the HTML5 specification</li>
+    </ul>
+  </p>
+</div>
