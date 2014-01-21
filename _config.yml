@@ -101,6 +101,7 @@ JB :
     provider : google
     google :
         tracking_id : 'UA-47173177-1'
+        domain: 'lessmad.com'
     getclicky :
       site_id :
     mixpanel :
