@@ -5,7 +5,7 @@ layout: default
 <div class="jumbotron intro">
   <h1>
     <img src="/assets/images/Ember.js_Logo_and_Mascot.png" />
-    We are a consulting company located in the San Francisco Bay Area, helping businesses
+    We are a team of developers located in the San Francisco Bay Area, helping businesses
     to build web applications using Ember.js and Ruby on Rails.
   </h1>
 </div>
