@@ -21,3 +21,17 @@ p {
 iframe.wufoo-form-container {
   max-width: 640px;
 }
+
+.container ul {
+  list-style: none;
+}
+
+.container ul li {
+  font-size: larger;
+}
+
+.container i.fa {
+  margin-right: 0.5em;
+
+  color: black;
+}
