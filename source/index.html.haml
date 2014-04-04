@@ -1,0 +1,45 @@
+.header
+  .container
+    -# %h2.subtitle Don't give a shit
+    %h1.title We Build Web Applications
+
+
+.what.slide
+  .container
+    = partial "title", locals: {href: 'what', title: "What We Do"}
+
+    %p
+      %span We are a small team of developers located in the San Francisco Bay Area.
+      %span We want to help you build beautiful and modern web applications.
+      %span We primarily use Ember.js and Ruby on Rails.
+
+
+.who.slide
+  .container
+    = partial "title", locals: {href: 'who', title: "Who We Are"}
+
+    %ul.team-members
+      - data.members.each do |member|
+        = partial "bio/member", locals: {member: member}
+
+.foss.slide
+  .container
+    = partial "title", locals: {href: 'projects', title: "Projects"}
+
+    %p.justify
+      We help companies at all stages, from building a Minimum Viable Product to shipping new features to an existing application. We can skill up your team by pairing or accelerate your development by adding manpower. We can audit your code to bring best practices to your team and allow them to write idiomatic Ember code and increase their productivity.
+
+    %p
+      Here are some of the projects we have worked on:
+
+    .projects
+      - data.projects.each do |project|
+        = partial "projects/description", locals: {project: project}
+
+
+.connect.slide
+  .container
+    = partial "title", locals: {href: 'connect', title: "Contact"}
+
+    = partial "contact/content"
+

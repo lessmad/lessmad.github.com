@@ -1,0 +1,10 @@
+.contacts
+  - data.contacts.each do |contact|
+    .contact
+      %a{href: contact.link, target: "_blank"}
+        %span.icon{class: contact.icon}
+      .type
+        = contact.type
+      %a{href: contact.link, target: "_blank"}
+        = contact.name
+

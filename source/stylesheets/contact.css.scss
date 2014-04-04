@@ -1,0 +1,58 @@
+@import "colour";
+
+@font-face {
+	font-family: 'contact';
+	src:url('/fonts/contact.eot?-88njoo');
+	src:url('/fonts/contact.eot?#iefix-88njoo') format('embedded-opentype'),
+		url('/fonts/contact.woff?-88njoo') format('woff'),
+		url('/fonts/contact.ttf?-88njoo') format('truetype'),
+		url('/fonts/contact.svg?-88njoo#contact') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'contact';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter:before {
+	content: "\e600";
+}
+.icon-mail:before {
+	content: "\e601";
+}
+
+.icon-mail {
+  color: $mail_link;
+
+  &:hover {
+    color: $mail_link_hover;
+  }
+}
+
+.contacts {
+  text-align: center;
+  .icon {
+    font-size: 120px;
+  }
+}
+
+.contact {
+  display: inline-block;
+
+  margin: 0 25px;
+
+  .type {
+    margin: 15px 0;
+  }
+}

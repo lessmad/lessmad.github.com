@@ -1,0 +1,26 @@
+@import "typography";
+
+.header {
+  padding: 120px 0;
+
+  background: url(/images/das-bridge-1900.jpg) no-repeat;
+  background-size: cover;
+  background-position: bottom;
+
+  h1, h2 {
+    margin: 0.5em;
+
+    text-align: center;
+    text-shadow: black 0 2px;
+    color: white;
+  }
+
+  h1 {
+    font-size: $large;
+  }
+
+  h2 {
+    font-size: $medium;
+    font-style: italic;
+  }
+}
