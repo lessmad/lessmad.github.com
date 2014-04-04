@@ -3,6 +3,7 @@
 .header {
   padding: 120px 0;
 
+  background-color: black; // less ugly when image takes time to load
   background: url(/images/das-bridge-1900.jpg) no-repeat;
   background-size: cover;
   background-position: bottom;
