@@ -1,0 +1,14 @@
+---
+layout: false
+domain: "http://lessmad.io/"
+---
+<% pages = sitemap.resources.find_all{|p| p.source_file.match(/\.html/) } %>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<% pages.each do |p| %>
+  <url>
+    <loc><%= current_page.data.domain %><%=p.destination_path.gsub('/index.html','')%></loc>
+    <priority>0.7</priority>
+  </url>
+<% end %>
+</urlset>

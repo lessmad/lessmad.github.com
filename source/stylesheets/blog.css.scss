@@ -1,0 +1,50 @@
+@import "highlight";
+@import "highlight/default";
+
+h2 {
+  font-size: 1.5em;
+}
+
+header {
+  margin: 1em 0;
+
+  h1, h2 {
+    margin: 0;
+  }
+}
+
+code {
+  color: #666;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+
+  width: 1024px;
+}
+
+#main {
+  display: inline-block;
+  width: 69%;
+
+  vertical-align: top;
+}
+
+#sidebar {
+  display: inline-block;
+  width: 29%;
+  padding-left: 10px;
+}
+
+article {
+  p {
+    text-align: justify;
+  }
+
+  footer ol {
+    list-style-type: none;
+  }
+}

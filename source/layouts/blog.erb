@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>LessMad Blog<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+    <%= stylesheet_link_tag "normalize", "all", "blog" %>
+
+    <%= javascript_include_tag "highlight.pack" %>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <%= partial 'google_analytics', locals: {tracking_code: 'UA-47173177-2', domain: 'lessmad.io'}  if build? %>
+  </head>
+  <body class="blog">
+    <%= partial 'blog/nav' %>
+
+    <div class="center">
+      <div id="main" role="main">
+        <%= yield %>
+      </div>
+
+      <div id="sidebar">
+        <%= partial "blog/sidebar" %>
+      </div>
+    </div>
+  </body>
+</html>

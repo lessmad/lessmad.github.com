@@ -1,0 +1,10 @@
+.nav
+  #logo LessMad
+  = link_to "Menu", '#', {onclick: "toggleMenu(); return false;", class: "menu-button"}
+  %ul
+    %li
+      %a{ href: '/blog' } Blog
+    %li
+      %a{ href: '/blog/archives' } Archives
+    %li
+      %a{ href: '/' } Website

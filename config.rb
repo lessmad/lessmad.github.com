@@ -38,6 +38,24 @@
 # Reload the browser automatically whenever files change
 # activate :livereload
 
+set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, :with_toc_data => true
+set :markdown_engine, :redcarpet
+
+
+activate :blog do |blog|
+  blog.prefix = "blog"
+  blog.layout = "blog"
+
+  blog.calendar_template = "blog/calendar.html"
+  blog.tag_template = "blog/tag.html"
+
+  blog.new_article_template = "./source/blog/article.tt"
+end
+
+# Apparently this needs to go after
+# See https://coderwall.com/p/qgnwzw
+activate :directory_indexes
+
 # Methods defined in the helpers block are available in templates
 # helpers do
 #   def some_helper

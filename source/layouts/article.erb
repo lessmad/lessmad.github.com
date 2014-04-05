@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>LessMad Blog<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+    <%= stylesheet_link_tag "normalize", "all", "blog" %>
+
+    <%= javascript_include_tag "highlight.pack" %>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <%= partial 'google_analytics', locals: {tracking_code: 'UA-47173177-2', domain: 'lessmad.io'}  if build? %>
+  </head>
+  <body class="blog">
+    <%= partial 'blog/nav' %>
+
+    <div class="center">
+      <div id="main" role="main">
+        <article>
+          <header>
+            <h1><%= current_article.title %></h1>
+            <span><%= current_article.date.strftime('%b %e %Y') %></span>
+          </header>
+          <!-- use article.summary(250) if you have Nokogiri available to show just
+               the first 250 characters -->
+          <%= yield %>
+
+          <footer>
+            <h4>Tags</h4>
+            <ol>
+            <% current_article.tags.each do |tag| %>
+              <li>
+              <%= link_to tag, tag_path(tag) %>
+              </li>
+            <% end %>
+            </ol>
+          </footer>
+        </article>
+      </div>
+
+      <div id="sidebar">
+        <%= partial "blog/sidebar" %>
+      </div>
+    </div>
+  </body>
+</html>

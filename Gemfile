@@ -3,6 +3,7 @@
 source 'http://rubygems.org'
 
 gem "middleman", "~>3.2.2"
+gem "middleman-blog"
 # See https://github.com/neo/middleman-gh-pages/pull/10
 #   we need the reverse semantics: commit to source branch and deploy to master
 #   branch
@@ -11,6 +12,7 @@ gem 'middleman-gh-pages'
 # Live-reloading plugin
 gem "middleman-livereload", "~> 3.1.0"
 gem 'compass'
+gem "redcarpet"
 
 # For faster file watcher updates on Windows:
 gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
