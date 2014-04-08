@@ -1,6 +1,6 @@
 - name: "Oasis.js"
   description: "A pleasant API for safe communication with untrusted code in sandboxed iframes and web workers."
-  link: "http://oasisjs.com/"
+  link: "https://github.com/tildeio/oasis.js"
 - name: "MessageChannel.js"
   description: "A near-polyfill of the channel messaging described in the HTML5 specification."
   link: "https://github.com/tildeio/MessageChannel.js"
