@@ -5,23 +5,30 @@ tags: "Ember.js"
 layout: "article"
 ---
 
-Ember.js is a javascript framework that was started more than 3 years ago now and
-made a huge step forward when the version 1.0 was released in August 2013. It is now
+Ember.js is a JavaScript framework that was started more than 3 years ago now and
+made a huge step forward when version 1.0 was released in August 2013. It is now
 possible to build quite fast complex web applications while increasing the developers'
 productivity (by reducing boilerplate code) and the end user's happiness (no slow page refresh).
 
 Doing consulting work at LessMad, I've discovered that despite the
 great documentation, it is not always clear for some developers how to structure an
-Ember application and when to use some features. The goal of this post will be
+Ember.js application and when to use some features. The goal of this post will be
 to work on a real example, from the mockups to the code. I'll assume that the general concepts of
 Ember.js (routing, controllers, views, models, layouts, components, ...) are
 understood. This post is the first of a serie that will lead us to build a blog engine.
 
+[TODO: should rephrase; this is not a real example]
+[TODO: feels like a long introduction; maybe drop the first paragraph]
+
 ## The blog application
+
+[TODO: first step?  you have not introduced multiple steps; do you mean this is
+the first in a series of blog posts and this is what we will build in the first
+post?]
 
 Here is the simple application we will build in this first step.
 
-The homepage renders all the posts.
+The homepage shows all the posts.
 
 ![Emblog homepage mockup](2014/05/16/ember-js-from-mockups-to-the-code/emblog-homepage.png "Emblog homepage mockup")
 
@@ -38,8 +45,12 @@ While taking a look at those 3 mockups, we can start looking at some details tha
 to structure our Ember.js code:
 
 * The application has 3 different types of URLs, which will guide how we implement our routes
+  [TODO: rephrase; you do not "guide how"]
 * The page layout 
 * The displayed content ( we manipulate posts )
+  [TODO: this last item is unclear; make it more specific; not sure what the
+  parenthetical is getting at; how are the posts manipulated?; seems like we're
+  just showing them]
 
 ## The layout
 
@@ -69,7 +80,7 @@ application.
 ```
 
 It's easy to add too many elements in a single template. It's a good practice to
-create templates for differents sections of the application. In our case, we
+create templates for different sections of the application. In our case, we
 define two additional templates, one for the header and another one for the
 footer.
 
@@ -90,6 +101,7 @@ footer.
 
 We can then insert those templates into our layout using the `render`
 helper.
+[TODO: may want a brief aside to explain how render differs from partial]
 
 ```handlebars
 <script type="text/x-handlebars" data-template-name="application">
@@ -101,7 +113,7 @@ helper.
 </script>
 ```
 
-The sidebar currently displays the same information through all our pages. It's
+The sidebar currently displays the same information throughout all our pages. It's
 easy to imagine that it could be customized for each route. Instead of simply
 rendering a template, we will create a named outlet `sidebar` and let each route
 manages its content. A route can then easily decide to not have a sidebar by not
@@ -123,7 +135,7 @@ connecting it.
 
 We can identify 3 different routes:
 
-* `/`, which represents the index route, offered for free by Ember
+* `/`, the index route, which Ember automatically creates for you
 * `/articles/:id` for reading a specific post
 * `/archives/:year/:month` for filtering posts published a month of a year
 
@@ -131,12 +143,17 @@ The routes defined in the application are:
 
 ```javascript
 App.Router.map(function() {
-  // The `IndexRoute` offered by Ember.js will take care of the `/` url
+  // The `IndexRoute` created by Ember.js will take care of the `/` path
   this.route('post', {path: 'posts/:post_id'});
   this.route('archive', {path: 'archives/:year/:month'});
 });
 ```
 
+[TODO: this first part?]
+[TODO: why are these ember objects; now you have to create them in the model
+hook]
+[TODO: should rephrase here and elsewhere: routes define a model hook; the way
+you've written it makes model hook almost sound like a property]
 A route needs to define which model is represented by that url. In this first
 part, we will use `Ember.Object`s. A post has an id, a title, a date and a body.
 
@@ -170,17 +187,18 @@ App.Post.FIXTURES = [{
 }];
 ```
 
-The next goal is to setup the content that will be displayed in the views.
+The next goal is to set up the content that will be displayed in the views.
 In Ember.js, a route defines a `model` that is passed to a `controller` that is
 used as context for a `view`/`template`. If you don't define a controller or a
 view for a route, Ember.js will create one for you. 
+[TODO: i think it will create the route class for you as well]
 
 ## The controllers
 
 Our index page displays posts. The default `IndexController` that would be
 be generated by Ember.js inherits from `Ember.Controller` [TODO: check that].
 As our homepage displays a collection of posts, we need to make sure that our
-controller can manage an array. We would declare explicitely the `IndexController`
+controller can manage an array. We would declare explicitly the `IndexController`
 as a subclass of `Ember.ArrayController`.
 
 ```js
@@ -197,6 +215,8 @@ the posts.
 App.PostsController = Ember.ArrayController.extend();
 ```
 
+[TODO: it feels weird to say convention over configuration right before you
+configure something to sidestep the convention]
 Ember.js is all about convention over configuration. By default, you would
 expect the `IndexRoute` to work automatically with the `IndexController`. As our
 `IndexRoute` uses now the `PostsController`, we need to specify it manually:
@@ -232,6 +252,7 @@ returned by the `model` function of the route. As we don't have any customizatio
 point, no need to create an `App.IndexView` class, we will rely on the default one provided
 by Ember.
 
+[TODO: is this right? i think the body is written as if you had `each item`]
 ```handlebars
 <script type="text/x-handlebars" data-template-name="index">
   {{#each}}
@@ -250,12 +271,12 @@ With this template, we can see our posts on the index page. But this is not
 exactly what we were expecting:
 
 - the posts are not displayed from the newest to the oldest date
-- the posts' dates are not readible ( `Sat Mar 01 2014 00:00:00 GMT-0800 (PST)`
+- the posts' dates are not formatted nicely ( `Sat Mar 01 2014 00:00:00 GMT-0800 (PST)`
 when we were expecting `March 1st 2014` )
 
 Manipulating the data displayed is usually the concern of the controller.
-Sorting the content is really easy with Ember.js [add ref to doc]. We need to 
-update our `PostsController` to take advantage of the builtin sort mechanism,
+Sorting the content is really easy with Ember.js [TODO: add ref to doc]. We need to 
+update our `PostsController` to take advantage of the built in sort mechanism,
 based on the `SortableMixin`.
 
 ```js
@@ -270,6 +291,13 @@ differently depending on the area of the application ( `03/01/2014` or `March 1s
 etc... ). A good way of doing it is to create a Handlebars helper that can be 
 call with the needed format. Moment.js provides the API to actually format a javascript
 date to a string.
+
+[TODO: this post is very wordy at times; look below for a rewrite of the above
+that is much shorter (obviously we'd want to link moment.js and maybe also
+handlebars helpers)]
+
+Formatting a date is a good use case for Handlebars helpers.  Here's a helper
+that formats a given date using moment.js.
 
 ```js
 Ember.Handlebars.registerBoundHelper('formatDate', function(date, format) {
@@ -305,6 +333,7 @@ It's easy to reuse that helper in different templates.
 And voila!
 
 
+[TODO: i still need to give feedback from here down]
 ## The sidebar
 
 The sidebar contains two widgets, one showing the last 3 posts, the other months
