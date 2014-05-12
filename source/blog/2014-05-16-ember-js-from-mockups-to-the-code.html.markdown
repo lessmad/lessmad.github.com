@@ -8,7 +8,7 @@ layout: "article"
 Ember.js is a javascript framework that was started more than 3 years ago now and
 made a huge step forward when the version 1.0 was released in August 2013. It is now
 possible to build quite fast complex web applications while increasing the developers'
-productivity (by reducing boilerplate code) and the end user's hapiness (no slow page refresh).
+productivity (by reducing boilerplate code) and the end user's happiness (no slow page refresh).
 
 Doing consulting work at LessMad, I've discovered that despite the
 great documentation, it is not always clear for some developers how to structure an
@@ -37,7 +37,7 @@ The Archives page displays a summary of all the posts.
 While taking a look at those 3 mockups, we can start looking at some details that will help us make decisions on how 
 to structure our Ember.js code:
 
-* The application has 3 differents types of URLs, which will guide how we implement our routes
+* The application has 3 different types of URLs, which will guide how we implement our routes
 * The page layout 
 * The displayed content ( we manipulate posts )
 
@@ -602,7 +602,7 @@ Handlebars helper to displays ellipses.
 The `truncate` helper creates a new string using the `&:hellip;` html entity.
 [TODO: find the right name for that attack] By default, Ember will escape all
 printed strings to prevent vulnerability in your application.
-In our case, we don't want here to escape our ellipsis, so we dont' return a
+In our case, we don't want here to escape our ellipsis, so we don't return a
 simple string but an instance of `Ember.Handlebars.SafeString`. 
 
 ```js
@@ -645,7 +645,4 @@ App.ArchiveRoute = Ember.Route.extend({
 });
 ```
 
-
 ## Conclusion
-
-
