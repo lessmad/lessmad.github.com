@@ -6,7 +6,7 @@
 
 .what.slide
   .container
-    = partial "title", locals: {href: 'what', title: "What We Do"}
+    = partial "title", locals: {href: 'emberjs-consulting', title: "What We Do"}
 
     %p
       %span We are a small team of developers located in the San Francisco Bay Area.
@@ -16,7 +16,7 @@
 
 .who.slide
   .container
-    = partial "title", locals: {href: 'who', title: "Who We Are"}
+    = partial "title", locals: {href: 'team', title: "Who We Are"}
 
     %ul.team-members
       - data.members.each do |member|
@@ -39,7 +39,7 @@
 
 .connect.slide
   .container
-    = partial "title", locals: {href: 'connect', title: "Contact"}
+    = partial "title", locals: {href: 'contact', title: "Contact"}
 
     = partial "contact/content"
 

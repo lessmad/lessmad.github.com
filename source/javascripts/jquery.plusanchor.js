@@ -32,14 +32,18 @@
             // End onInit callback
 
             base.$el.find('a[href^="#"]').click(function( e ) {
-                
+
                 e.preventDefault();
-                
+
                 var $this = $(this),
                     href = $this.attr('href'),
                     $name = $('a[name="' + $(this).attr('href').substring(1) + '"]');
-                    
+
                 if ( $(href).length ){
+
+                    if( base.options.before ) {
+                      base.options.before( $name );
+                    }
 
                     // onSlide callback
                     if ( base.options.onSlide && typeof( base.options.onSlide ) == 'function' ) base.options.onSlide( base );
@@ -51,6 +55,7 @@
                     }, base.options.speed, base.options.easing);
 
                 } else if ( $name.length ){
+
 
                     // onSlide callback
                     if ( base.options.onSlide && typeof( base.options.onSlide ) == 'function' ) base.options.onSlide( base );
